@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package naming_client
 
 import (
@@ -67,7 +68,7 @@ type INamingClient interface {
 	//GroupName optional,default:DEFAULT_GROUP
 	GetService(param vo.GetServiceParam) (model.Service, error)
 
-	//SelectAllInstance return all instances,include healthy=false,enable=false,weight<=0
+	// SelectAllInstances return all instances,include healthy=false,enable=false,weight<=0
 	//ServiceName require
 	//Clusters optional,default:DEFAULT
 	//GroupName optional,default:DEFAULT_GROUP
@@ -80,7 +81,7 @@ type INamingClient interface {
 	//HealthyOnly optional
 	SelectInstances(param vo.SelectInstancesParam) ([]model.Instance, error)
 
-	//SelectInstances return one instance by WRR strategy for load balance
+	// SelectOneHealthyInstance return one instance by WRR strategy for load balance
 	//And the instance should be health=true,enable=true and weight>0
 	//ServiceName require
 	//Clusters optional,default:DEFAULT
