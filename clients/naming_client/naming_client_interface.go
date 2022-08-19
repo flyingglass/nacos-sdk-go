@@ -103,4 +103,10 @@ type INamingClient interface {
 
 	//GetAllServicesInfo use to get all service info by page
 	GetAllServicesInfo(param vo.GetAllServiceInfoParam) (model.ServiceList, error)
+
+	//GetAllNamespaces get all namespaces
+	GetAllNamespaces() ([]model.Namespace, error)
+
+	//GetCatalogServices get all services from the Nacos catalog
+	GetCatalogServices(namesSpace string) (model.CatalogServiceList, error)
 }

@@ -348,3 +348,16 @@ func (sc *NamingClient) Unsubscribe(param *vo.SubscribeParam) error {
 	sc.subCallback.RemoveCallbackFuncs(util.GetGroupName(param.ServiceName, param.GroupName), strings.Join(param.Clusters, ","), &param.SubscribeCallback)
 	return nil
 }
+
+// GetAllNamespaces 获取Namespace
+func (sc *NamingClient) GetAllNamespaces() ([]model.Namespace, error) {
+	return sc.hostReactor.GetAllNamespaces(), nil
+}
+
+//GetCatalogServices get all services from the Nacos catalog
+func (sc *NamingClient) GetCatalogServices(namesSpace string) (model.CatalogServiceList, error) {
+	if len(namesSpace) == 0 {
+		namesSpace = constant.DEFAULT_NAMESPACE_ID
+	}
+	return sc.hostReactor.GetCatalogServices(namesSpace, 1, 10000), nil
+}

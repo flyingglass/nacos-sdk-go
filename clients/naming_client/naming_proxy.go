@@ -203,3 +203,19 @@ func (proxy *NamingProxy) GetAllServiceInfoList(namespace, groupName string, pag
 	api := constant.SERVICE_INFO_PATH + "/list"
 	return proxy.nacosServer.ReqApi(api, param, http.MethodGet)
 }
+
+func (proxy *NamingProxy) GetAllNamespaces() (string, error) {
+	param := make(map[string]string)
+	api := constant.NAMESPACE_PATH
+	return proxy.nacosServer.ReqApi(api, param, http.MethodGet)
+}
+
+func (proxy *NamingProxy) GetCatalogServiceList(namespace string, pageNo, pageSize uint32) (string,
+	error) {
+	param := make(map[string]string)
+	param["namespaceId"] = namespace
+	param["pageNo"] = strconv.Itoa(int(pageNo))
+	param["pageSize"] = strconv.Itoa(int(pageSize))
+	api := constant.CATALOG_SERVICE_PATH
+	return proxy.nacosServer.ReqApi(api, param, http.MethodGet)
+}
