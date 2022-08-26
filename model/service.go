@@ -135,10 +135,10 @@ type CatalogService struct {
 	ClusterCount         int32  `json:"clusterCount"`
 	IpCount              int32  `json:"ipCount"`
 	HealthyInstanceCount int32  `json:"healthyInstanceCount"`
-	TriggerFlag          bool   `json:"triggerFlag"`
+	TriggerFlag          string   `json:"triggerFlag"`
 }
 
 type CatalogServiceList struct {
-	Count       string            `json:"count"`
+	Count       uint32            `json:"count"`
 	ServiceList []*CatalogService `json:"serviceList"`
 }
